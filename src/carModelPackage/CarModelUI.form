@@ -23,13 +23,115 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="400" max="32767" attributes="0"/>
+          <Group type="102" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Component id="jLabelSpeed" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabelSpeedValue" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabelDistance" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelDistanceValue" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="jLabelTimeMult" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="spnTimeMult" min="-2" pref="42" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jLabelTime" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jLabelTimeValue" min="-2" pref="44" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="jButtonStop" min="-2" pref="109" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jButtonStart" min="-2" pref="109" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <EmptySpace min="0" pref="300" max="32767" attributes="0"/>
+          <Group type="102" alignment="0" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabelSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelSpeedValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelDistance" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelDistanceValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelTimeMult" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="spnTimeMult" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <Component id="jLabelTime" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jLabelTimeValue" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace pref="274" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jButtonStart" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="jButtonStop" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
       </Group>
     </DimensionLayout>
   </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JLabel" name="jLabelSpeed">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x421;&#x43a;&#x43e;&#x440;&#x43e;&#x441;&#x442;&#x44c;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelSpeedValue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0 &#x43a;&#x43c;/&#x447;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonStart">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x430;&#x440;&#x442;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonStartActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="jButtonStop">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x421;&#x442;&#x43e;&#x43f;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonStopActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelDistance">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x431;&#x435;&#x433;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelDistanceValue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0 &#x43a;&#x43c;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSpinner" name="spnTimeMult">
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTimeMult">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x423;&#x441;&#x43a;&#x43e;&#x440;&#x435;&#x43d;&#x438;&#x435; &#x432;&#x440;&#x435;&#x43c;&#x435;&#x43d;&#x438;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTime">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="&#x41f;&#x440;&#x43e;&#x448;&#x435;&#x434;&#x448;&#x435;&#x435; &#x432;&#x440;&#x435;&#x43c;&#x44f;:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabelTimeValue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0 &#x441;&#x435;&#x43a;."/>
+      </Properties>
+    </Component>
+  </SubComponents>
 </Form>

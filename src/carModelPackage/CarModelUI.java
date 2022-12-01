@@ -3,7 +3,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package carModelPackage;
-
+import carModelPackage.Car;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 /**
  *
  * @author mvideo
@@ -15,6 +17,18 @@ public class CarModelUI extends javax.swing.JFrame {
      */
     public CarModelUI() {
         initComponents();
+        this.auto = new Car(126, 1326, 0.28, 0.025);
+        this.timer = new javax.swing.Timer(1000, new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                
+                double times = Double.parseDouble(spnTimeMult.getValue().toString()); 
+                time += times; 
+                double distance = auto.getTripDistance();
+                auto.tick();
+                jLabelDistanceValue.setText(String.valueOf(distance) + "км");
+                jLabelSpeedValue.setText(String.valueOf(auto.getThrustValue()/1326));
+            }
+        });
     }
 
     /**
@@ -26,21 +40,108 @@ public class CarModelUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabelSpeed = new javax.swing.JLabel();
+        jLabelSpeedValue = new javax.swing.JLabel();
+        jButtonStart = new javax.swing.JButton();
+        jButtonStop = new javax.swing.JButton();
+        jLabelDistance = new javax.swing.JLabel();
+        jLabelDistanceValue = new javax.swing.JLabel();
+        spnTimeMult = new javax.swing.JSpinner();
+        jLabelTimeMult = new javax.swing.JLabel();
+        jLabelTime = new javax.swing.JLabel();
+        jLabelTimeValue = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jLabelSpeed.setText("Скорость:");
+
+        jLabelSpeedValue.setText("0 км/ч");
+
+        jButtonStart.setText("Старт");
+        jButtonStart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStartActionPerformed(evt);
+            }
+        });
+
+        jButtonStop.setText("Стоп");
+        jButtonStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStopActionPerformed(evt);
+            }
+        });
+
+        jLabelDistance.setText("Пробег:");
+
+        jLabelDistanceValue.setText("0 км");
+
+        jLabelTimeMult.setText("Ускорение времени:");
+
+        jLabelTime.setText("Прошедшее время:");
+
+        jLabelTimeValue.setText("0 сек.");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabelSpeed)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelSpeedValue)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelDistance)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelDistanceValue)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelTimeMult)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(spnTimeMult, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabelTime)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabelTimeValue, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonStop, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jButtonStart, javax.swing.GroupLayout.PREFERRED_SIZE, 109, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabelSpeed)
+                    .addComponent(jLabelSpeedValue)
+                    .addComponent(jLabelDistance)
+                    .addComponent(jLabelDistanceValue)
+                    .addComponent(jLabelTimeMult)
+                    .addComponent(spnTimeMult, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabelTime)
+                    .addComponent(jLabelTimeValue))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 274, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonStart)
+                    .addComponent(jButtonStop))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
+        timer.start();
+    }//GEN-LAST:event_jButtonStartActionPerformed
+
+    private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
+        timer.stop();
+    }//GEN-LAST:event_jButtonStopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -76,7 +177,19 @@ public class CarModelUI extends javax.swing.JFrame {
             }
         });
     }
-
+    private double time = 0;
+    private javax.swing.Timer timer;
+    private Car auto;
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonStart;
+    private javax.swing.JButton jButtonStop;
+    private javax.swing.JLabel jLabelDistance;
+    private javax.swing.JLabel jLabelDistanceValue;
+    private javax.swing.JLabel jLabelSpeed;
+    private javax.swing.JLabel jLabelSpeedValue;
+    private javax.swing.JLabel jLabelTime;
+    private javax.swing.JLabel jLabelTimeMult;
+    private javax.swing.JLabel jLabelTimeValue;
+    private javax.swing.JSpinner spnTimeMult;
     // End of variables declaration//GEN-END:variables
 }

@@ -84,7 +84,13 @@ public class Car {
     
     private double getThrustForse(double power, double shaftRevolutions, double transmissionRatio, double mainGearRatio, double wheelRadius){
         double transmissionPowerLossCoefficient = 0.9;
-        return (transmissionPowerLossCoefficient * ((power * shaftRevolutions) / 9550) * transmissionRatio * mainGearRatio) / wheelRadius;
+        double thrustForce = (transmissionPowerLossCoefficient * ((power * shaftRevolutions) / 9550) * transmissionRatio * mainGearRatio) / wheelRadius;
+        this.thrustForce = thrustForce;
+        return thrustForce;
+    }
+    
+    public double getThrustValue(){
+        return this.thrustForce;
     }
     
     private double getRollingResistanceForce(double roadAngle){
@@ -117,7 +123,7 @@ public class Car {
         return this.tripDistance;
     }
     
-    public void tick(double boots){
+    public void tick(){
         // ускорение автомобиля
         double currentBoost = this.thrustForce / this.weight;
         
