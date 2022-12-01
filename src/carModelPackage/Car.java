@@ -8,7 +8,7 @@ import java.util.Date;
 
 /**
  *
- * @author mvideo
+ * @author 
  */
 public class Car {
     
@@ -56,10 +56,13 @@ public class Car {
     
     //коэффициент трения скольжения
     private double slidingFrictionCoefficient;
+    
     /**
      *
      * @param hosePower hose powers default - 126 kia cerato
      * @param weight weight in kilograms default - 1326 kia cerato
+     * @param airResistanceCoefficient коэффициент сопротивления воздуху
+     * @param slidingFrictionCoefficient коэффициент трения покрытия
      */
     public Car(double hosePower, double weight, double airResistanceCoefficient, double slidingFrictionCoefficient) {
         // лобовая площадь автомобиля (влияет на силу сопротивления воздуху)
@@ -68,7 +71,7 @@ public class Car {
         
         // 1 hp = 735 KWatt
         this.power = hosePower * 0.735;
-//        this.thrustForce = this.calculateThrustForse(this.power, this.shaftRevolutions, this.transmissionRatio, this.mainGearRatio, this.wheelRadius);
+        this.thrustForce = this.getThrustForse(this.power, this.shaftRevolutions, this.transmissionRatio, this.mainGearRatio, this.wheelRadius);
 
         this.currentSpeed = 0;
         this.tripDistance = 0;
@@ -84,10 +87,14 @@ public class Car {
         return (transmissionPowerLossCoefficient * ((power * shaftRevolutions) / 9550) * transmissionRatio * mainGearRatio) / wheelRadius;
     }
     
-    private double getRollingResistanceForce(double slidingFrictionCoefficient, double mass, double roadAngle){
+    private double getRollingResistanceForce(double roadAngle){
         double g = 9.8;
-        double rollingResistanceForce = slidingFrictionCoefficient * mass * g * roadAngle;
+        double rollingResistanceForce = this.slidingFrictionCoefficient * this.weight * g * Math.cos(roadAngle);
         return rollingResistanceForce;
+    }
+    
+    private double getAirResistanceForce(double speed){
+        return this.airResistanceCoefficient * this.frontalArea * this.airDensity * Math.pow(speed, 2) / 2;
     }
     
     public double getSpeed() {
@@ -102,18 +109,27 @@ public class Car {
         this.tripDistance = this.tripDistance + boost;
     }
     
-    public void tick(double boots){
-        double boostWithAllObstacles = boost - 
-        if (this.currentSpeed > 100){
-            this.updateTripDistance(boots / 1.5);
-        } else{
-            this.updateTripDistance(boots);
-        }
-        this.updateTripTime();
-        
+    public double getTripTime(){
+        return this.tripTime;
     }
     
-    public 
+    public double getTripDistance(){
+        return this.tripDistance;
+    }
     
-    
+    public void tick(double boots){
+        // ускорение автомобиля
+        double currentBoost = this.thrustForce / this.weight;
+        
+        // массой воздуха пренебргаем
+        // ускорение воздуха
+        double airBoost = this.getAirResistanceForce(this.currentSpeed);
+        
+        // ускорение трения
+        double rollingBoost = this.getRollingResistanceForce(0) / this.weight;
+        
+        double boostWithAllObstacles = currentBoost - airBoost - rollingBoost;
+        this.updateTripDistance(boostWithAllObstacles);
+        this.updateTripTime();
+    }
 }
