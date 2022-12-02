@@ -193,8 +193,8 @@ public class Car {
         this.currDist = this.currDist + boostPerSec;
         
         // -- DEBUG --
-        System.out.println("prevDist: " + String.valueOf(prevDist) + " currDist: " + String.valueOf(this.currDist));
-        System.out.println("triptime: " + String.valueOf(this.configTime));
+        //System.out.println("prevDist: " + String.valueOf(prevDist) + " currDist: " + String.valueOf(this.currDist));
+        //System.out.println("triptime: " + String.valueOf(this.configTime));
 
         if (this.currDist > 0){
             this.updateSpeed(prevDist, this.currDist);
@@ -237,7 +237,7 @@ public class Car {
         
         // -- DEBUG --
         // вывод в консоль ускорения
-        System.out.println(String.valueOf(boostWithAllObstacles));
+        //System.out.println(String.valueOf(boostWithAllObstacles));
         
         this.updateTripDistance(boostWithAllObstacles * multParament);
         this.updateTripTime(multParament);
