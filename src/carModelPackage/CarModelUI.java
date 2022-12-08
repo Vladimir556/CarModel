@@ -18,7 +18,7 @@ public class CarModelUI extends javax.swing.JFrame {
      */
     public CarModelUI() {
         initComponents();
-        this.auto = new Car(126, 1326, 0.28, 0.025);
+        this.auto = new Car(Double.parseDouble(jSpinnerPower.getValue().toString()), Double.parseDouble(jSpinnerWeight.getValue().toString()), Double.parseDouble(jTextFieldAirC.getText()), Double.parseDouble(jTextFieldRollC.getText()));
         jLabelMaxSpeed.setText(String.format("%.5g%n",auto.getMaxSpeed()) + " км/ч");
         jProgressBar.setMaximum((int)auto.getMaxSpeed());
         this.timer = new javax.swing.Timer(1000, new ActionListener() {
@@ -80,12 +80,12 @@ public class CarModelUI extends javax.swing.JFrame {
         jPanelModelParametrs = new javax.swing.JPanel();
         jSpinnerPower = new javax.swing.JSpinner();
         jSpinnerWeight = new javax.swing.JSpinner();
-        jSpinnerAirC = new javax.swing.JSpinner();
-        jSpinnerRollingC = new javax.swing.JSpinner();
         jLabelPower = new javax.swing.JLabel();
         jLabelPower1 = new javax.swing.JLabel();
         jLabelPower2 = new javax.swing.JLabel();
         jLabelPower3 = new javax.swing.JLabel();
+        jTextFieldRollC = new javax.swing.JTextField();
+        jTextFieldAirC = new javax.swing.JTextField();
         jButtonExit = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -197,7 +197,7 @@ public class CarModelUI extends javax.swing.JFrame {
                 .addGroup(jPanelModelVisualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelRollingResistance)
                     .addComponent(jLabelRollingResistanceValue))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
                 .addGroup(jPanelModelVisualLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabelMinSpeed)
                     .addComponent(jLabelMaxSpeed))
@@ -274,8 +274,6 @@ public class CarModelUI extends javax.swing.JFrame {
 
         jSpinnerWeight.setValue(1326);
 
-        jSpinnerAirC.setValue(0.28);
-
         jLabelPower.setText("Мощность (лс):");
 
         jLabelPower1.setText("Вес (кг):");
@@ -284,6 +282,10 @@ public class CarModelUI extends javax.swing.JFrame {
 
         jLabelPower3.setText("Коэф. Сопр. трения:");
 
+        jTextFieldRollC.setText("0.025");
+
+        jTextFieldAirC.setText("0.28");
+
         javax.swing.GroupLayout jPanelModelParametrsLayout = new javax.swing.GroupLayout(jPanelModelParametrs);
         jPanelModelParametrs.setLayout(jPanelModelParametrsLayout);
         jPanelModelParametrsLayout.setHorizontalGroup(
@@ -291,22 +293,20 @@ public class CarModelUI extends javax.swing.JFrame {
             .addGroup(jPanelModelParametrsLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelModelParametrsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModelParametrsLayout.createSequentialGroup()
-                        .addComponent(jLabelPower, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelModelParametrsLayout.createSequentialGroup()
+                        .addComponent(jLabelPower, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jSpinnerPower, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModelParametrsLayout.createSequentialGroup()
-                        .addComponent(jLabelPower3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanelModelParametrsLayout.createSequentialGroup()
+                        .addGroup(jPanelModelParametrsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabelPower1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelPower2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelPower3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jSpinnerRollingC, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModelParametrsLayout.createSequentialGroup()
-                        .addComponent(jLabelPower1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinnerWeight, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelModelParametrsLayout.createSequentialGroup()
-                        .addComponent(jLabelPower2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jSpinnerAirC, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelModelParametrsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jTextFieldRollC)
+                            .addComponent(jTextFieldAirC)
+                            .addComponent(jSpinnerWeight, javax.swing.GroupLayout.DEFAULT_SIZE, 62, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         jPanelModelParametrsLayout.setVerticalGroup(
@@ -322,13 +322,13 @@ public class CarModelUI extends javax.swing.JFrame {
                     .addComponent(jLabelPower1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelModelParametrsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinnerAirC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPower2))
+                    .addComponent(jLabelPower2)
+                    .addComponent(jTextFieldAirC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelModelParametrsLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jSpinnerRollingC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabelPower3))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabelPower3)
+                    .addComponent(jTextFieldRollC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(117, Short.MAX_VALUE))
         );
 
         jButtonExit.setText("Выйти");
@@ -374,10 +374,20 @@ public class CarModelUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
+        this.auto = new Car(Double.parseDouble(jSpinnerPower.getValue().toString()), Double.parseDouble(jSpinnerWeight.getValue().toString()), Double.parseDouble(jTextFieldAirC.getText()), Double.parseDouble(jTextFieldRollC.getText()));
+        this.jSpinnerPower.setEnabled(false);
+        this.jSpinnerWeight.setEnabled(false);
+        this.jTextFieldAirC.setEnabled(false);
+        this.jTextFieldRollC.setEnabled(false);
         timer.start();
+        
     }//GEN-LAST:event_jButtonStartActionPerformed
 
     private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
+        this.jSpinnerPower.setEnabled(true);
+        this.jSpinnerWeight.setEnabled(true);
+        this.jTextFieldAirC.setEnabled(true);
+        this.jTextFieldRollC.setEnabled(true);
         timer.stop();
     }//GEN-LAST:event_jButtonStopActionPerformed
 
@@ -457,10 +467,10 @@ public class CarModelUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanelModelParametrs;
     private javax.swing.JPanel jPanelModelVisual;
     private javax.swing.JProgressBar jProgressBar;
-    private javax.swing.JSpinner jSpinnerAirC;
     private javax.swing.JSpinner jSpinnerPower;
-    private javax.swing.JSpinner jSpinnerRollingC;
     private javax.swing.JSpinner jSpinnerWeight;
+    private javax.swing.JTextField jTextFieldAirC;
+    private javax.swing.JTextField jTextFieldRollC;
     private javax.swing.JToggleButton jToggleButtonBrake;
     private javax.swing.JToggleButton jToggleButtonGas;
     private javax.swing.JToggleButton jToggleButtonSwitcher;

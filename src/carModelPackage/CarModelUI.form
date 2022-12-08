@@ -151,7 +151,7 @@
                       <Component id="jLabelRollingResistance" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelRollingResistanceValue" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace pref="24" max="32767" attributes="0"/>
+                  <EmptySpace pref="32" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabelMinSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelMaxSpeed" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -357,25 +357,23 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabelPower" max="32767" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabelPower" pref="108" max="32767" attributes="0"/>
                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
                           <Component id="jSpinnerPower" min="-2" pref="62" max="-2" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabelPower3" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jSpinnerRollingC" min="-2" pref="62" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabelPower1" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jSpinnerWeight" min="-2" pref="62" max="-2" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabelPower2" max="32767" attributes="0"/>
-                          <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
-                          <Component id="jSpinnerAirC" min="-2" pref="62" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Group type="103" groupAlignment="0" attributes="0">
+                              <Component id="jLabelPower1" max="32767" attributes="0"/>
+                              <Component id="jLabelPower2" max="32767" attributes="0"/>
+                              <Component id="jLabelPower3" max="32767" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="18" pref="18" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="jTextFieldRollC" max="32767" attributes="0"/>
+                              <Component id="jTextFieldAirC" max="32767" attributes="0"/>
+                              <Component id="jSpinnerWeight" pref="62" max="32767" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -397,15 +395,15 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jSpinnerAirC" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelPower2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldAirC" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jSpinnerRollingC" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabelPower3" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTextFieldRollC" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace pref="117" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -425,15 +423,6 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinnerAirC">
-          <Properties>
-            <Property name="value" type="java.lang.Object" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="0.28" type="code"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JSpinner" name="jSpinnerRollingC">
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabelPower">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x41c;&#x43e;&#x449;&#x43d;&#x43e;&#x441;&#x442;&#x44c; (&#x43b;&#x441;):"/>
@@ -452,6 +441,16 @@
         <Component class="javax.swing.JLabel" name="jLabelPower3">
           <Properties>
             <Property name="text" type="java.lang.String" value="&#x41a;&#x43e;&#x44d;&#x444;. &#x421;&#x43e;&#x43f;&#x440;. &#x442;&#x440;&#x435;&#x43d;&#x438;&#x44f;:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldRollC">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0.025"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="jTextFieldAirC">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="0.28"/>
           </Properties>
         </Component>
       </SubComponents>
